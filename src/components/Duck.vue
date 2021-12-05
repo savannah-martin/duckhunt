@@ -20,7 +20,7 @@ export default {
     hit() {
       this.isVisible = false;
       const endTime = Date.now();
-      const responseTime = this.startTime - endTime;
+      const responseTime = endTime - this.startTime;
       this.$emit("hit", responseTime);
     },
     showDuck() {

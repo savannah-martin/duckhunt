@@ -45,9 +45,14 @@ export default {
   },
   methods: {
     startGame() {
+      this.total = 0;
       const interval = setInterval(() => {
         this.timeRemaining -= 1;
-        if (this.timeReinaing === 0) {
+        if (this.timeRemaining === 0) {
+          this.stopGame();
+          clearInterval(interval);
+        }
+        if (this.timeRemaining === -1){
           this.stopGame();
           clearInterval(interval);
         }
@@ -57,6 +62,7 @@ export default {
     },
     stopGame() {
       this.isPlaying = false;
+      this.timeRemaining = 0;
     },
     handleHit(responseTime) {
       this.score = (this.delay - responseTime) * 4;
